@@ -11,7 +11,7 @@ fi
 fail() { echo "FAIL: $1" >&2; exit 1; }
 grep -q "<h1>Capture Plus</h1>" <<<"$PAGE" || fail "heading not the app name"
 grep -q "Capture Plus: Screen Recorder" <<<"$PAGE" || fail "store name not mentioned"
-grep -q "effective October 26, 2026" <<<"$PAGE" || fail "effective date missing"
+grep -q "effective November 5, 2026" <<<"$PAGE" || fail "effective date missing"
 for id in summary collect use retention share contact state-rights europe support; do
   grep -q "id=\"$id\"" <<<"$PAGE" || fail "no #$id section"
 done
