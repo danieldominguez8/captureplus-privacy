@@ -11,7 +11,9 @@ fi
 fail() { echo "FAIL: $1" >&2; exit 1; }
 grep -q "<h1>Capture Plus</h1>" <<<"$PAGE" || fail "heading not the app name"
 grep -q "Capture Plus: Screen Recorder" <<<"$PAGE" || fail "store name not mentioned"
-grep -q "effective November 5, 2026" <<<"$PAGE" || fail "effective date missing"
+grep -q "effective November 9, 2026" <<<"$PAGE" || fail "effective date missing"
+# Show shortcuts (Input Monitoring) was removed before 1.1 shipped (App Review 2.4.5(v), 2026-11-09).
+grep -qi "Input Monitoring\|Show shortcuts\|shortcut caption" <<<"$PAGE" && fail "mentions the removed Show shortcuts / Input Monitoring"
 for id in summary collect use retention share contact state-rights europe support; do
   grep -q "id=\"$id\"" <<<"$PAGE" || fail "no #$id section"
 done
